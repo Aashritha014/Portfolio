@@ -155,9 +155,12 @@ body.dark .theme-btn:hover {
 .avatar {
   width: 300px;
   height: auto;
-  border-radius: 20px;
+  border-radius: 20px; /* fully circular */
   flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .hero-text {
   display: flex;
