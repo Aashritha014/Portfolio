@@ -381,3 +381,38 @@ body.dark .project:hover {
 body, .btn, .theme-btn, .sidebar, .sidebar-link, .skill, .project {
   transition: background-color 0.4s ease, color 0.4s ease, transform 0.4s ease;
 }
+
+
+
+
+/* -------------------- DINO GAME -------------------- */
+.dino-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem; /* reduce space from socials above */
+  padding-bottom: 4rem; /* keep some bottom spacing */
+}
+
+.dino-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2f2e2b;
+}
+
+/* Dark mode */
+body.dark .dino-section h2 {
+  color: #ffffff;
+}
+
+#dino-game {
+  border: 2px solid #c6d6c1;
+  border-radius: 10px;
+  background-color: #faf8f5;
+  width: 100%;
+  max-width: 600px; /* optional */
+  height: auto;
+}
+body.dark #dino-game {
+  background-color: #1e293b;
+  border-color: #334155;
+}

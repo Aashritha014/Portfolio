@@ -83,3 +83,122 @@ themeToggle.addEventListener("click", () => {
     themeToggle.textContent = "🌙";
   }
 });
+
+
+
+const canvas = document.getElementById("dino-game");
+const ctx = canvas.getContext("2d");
+
+let dino = { x: 50, y: 120, width: 25, height: 25, dy: 0, gravity: 0.6, jumpPower: -12, grounded: true };
+let obstacles = [];
+let gameSpeed = 4;
+let gameOver = false;
+
+// Jump or restart
+document.addEventListener("keydown", e => {
+  if (e.code === "Space") {
+    if (gameOver) restartGame();
+    else if (dino.grounded) {
+      dino.dy = dino.jumpPower;
+      dino.grounded = false;
+    }
+  }
+});
+
+canvas.addEventListener("click", () => {
+  if (gameOver) restartGame();
+});
+
+// Restart function
+function restartGame() {
+  dino = { x: 50, y: 120, width: 25, height: 25, dy: 0, gravity: 0.6, jumpPower: -12, grounded: true };
+  obstacles = [];
+  gameOver = false;
+}
+
+// Obstacle generator
+function spawnObstacle() {
+  const height = Math.random() * 20 + 20;
+  obstacles.push({ x: canvas.width, y: canvas.height - height, width: 20, height: height });
+}
+
+// Draw ground
+function drawGround() {
+  ctx.strokeStyle = "#b0a890";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height - 2);
+  ctx.lineTo(canvas.width, canvas.height - 2);
+  ctx.stroke();
+}
+
+// Draw Dino as pixel-style
+function drawDino() {
+  ctx.fillStyle = "#9caf88";
+  ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+  // Optional: legs
+  ctx.fillRect(dino.x + 2, dino.y + dino.height, 6, 4);
+  ctx.fillRect(dino.x + dino.width - 8, dino.y + dino.height, 6, 4);
+}
+
+// Draw obstacles as small cacti
+function drawObstacle(ob) {
+  ctx.fillStyle = "#7b936c";
+  ctx.fillRect(ob.x, ob.y, ob.width, ob.height);
+  // small spikes
+  ctx.fillStyle = "#5a704a";
+  ctx.fillRect(ob.x + 5, ob.y - 5, 2, 5);
+  ctx.fillRect(ob.x + ob.width - 7, ob.y - 5, 2, 5);
+}
+
+// Draw Game Over
+function drawGameOver() {
+  ctx.fillStyle = "#ff4d4f";
+  ctx.font = "28px monospace";
+  ctx.textAlign = "center";
+  ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
+  ctx.font = "16px monospace";
+  ctx.fillText("Press Space or Click to Restart", canvas.width / 2, canvas.height / 2 + 25);
+}
+
+// Game loop
+function update() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawGround();
+
+  if (!gameOver) {
+    // Dino physics
+    dino.dy += dino.gravity;
+    dino.y += dino.dy;
+    if (dino.y >= canvas.height - dino.height) {
+      dino.y = canvas.height - dino.height;
+      dino.dy = 0;
+      dino.grounded = true;
+    }
+
+    drawDino();
+
+    // Obstacles
+    if (Math.random() < 0.02) spawnObstacle();
+    obstacles.forEach((ob, i) => {
+      ob.x -= gameSpeed;
+      drawObstacle(ob);
+
+      // Collision detection
+      if (dino.x < ob.x + ob.width &&
+          dino.x + dino.width > ob.x &&
+          dino.y < ob.y + ob.height &&
+          dino.y + dino.height > ob.y) {
+        gameOver = true;
+      }
+
+      if (ob.x + ob.width < 0) obstacles.splice(i, 1);
+    });
+  } else {
+    drawGameOver();
+  }
+
+  requestAnimationFrame(update);
+}
+
+update();
