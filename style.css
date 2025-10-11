@@ -1,0 +1,359 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  background-color: #f8fafc; /* default light mode */
+  color: #1e293b;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  color: #9caf88; /* sage green accent */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Sidebar - desktop only (no background) */
+.sidebar {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  z-index: 100;
+  transition: all 0.5s ease-in-out;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #1e293b;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: color 0.4s ease, transform 0.4s ease, letter-spacing 0.4s ease;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  color: #9caf88;
+  letter-spacing: 1px;
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* Dark Mode Links - desktop */
+body.dark .sidebar-link {
+  color: #ffffff;
+}
+
+body.dark .sidebar-link:hover,
+body.dark .sidebar-link.active {
+  color: #9caf88;
+}
+
+/* Theme Toggle Button (on sidebar) */
+.theme-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: #9caf88;
+  color: #ffffff;
+  transition: background-color 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+}
+
+
+/* Mobile Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: row;
+    bottom: 10px;
+    top: auto;
+    right: 50%;
+    transform: translateX(50%);
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    transition: background-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .sidebar ul {
+    flex-direction: row;
+    gap: 1rem;
+    transition: gap 0.4s ease;
+  }
+
+  .sidebar-link {
+    writing-mode: horizontal-tb;
+    transform: rotate(0deg);
+    transition: color 0.4s ease, transform 0.4s ease;
+  }
+
+  .sidebar-link:hover {
+    transform: scale(1.1);
+  }
+
+  /* Dark Mode for mobile sidebar */
+  body.dark .sidebar {
+    background-color: rgba(30, 41, 59, 0.85);
+    box-shadow: 0 2px 15px rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.avatar {
+  width: 300px;
+  height: auto;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  max-width: 600px;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text .description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.hero-text .typing {
+  font-size: 1.3rem;
+  color: #9caf88;
+  min-height: 1.5rem;
+}
+
+/* Sections */
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  scroll-margin-top: 100px; /* offset for fixed sidebar */
+}
+/* Section Headings Spacing */
+.section h2 {
+  margin-bottom: 1rem; /* increase spacing between heading and content */
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.skill {
+  background-color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.skill:hover {
+  background-color: #C6D6C1;
+}
+
+/* Projects / Blog */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.project {
+  background-color: #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+.project:hover {
+  background-color: #cbd5e1;
+}
+
+/* Buttons */
+.btn {
+  background-color: #9caf88;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #7b936c;
+}
+
+/* Get in Touch Section */
+.get-in-touch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+.social-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #9caf88;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+  color: #7b936c;
+  transform: translateY(-2px);
+}
+
+
+
+/* Dark Mode Global */
+body.dark {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.dark a {
+  color: #9caf88;
+}
+
+body.dark .skill {
+  background-color: #1e293b;
+}
+
+body.dark .skill:hover {
+  background-color: #7b936c;
+}
+
+body.dark .project {
+  background-color: #1e293b;
+}
+
+body.dark .project:hover {
+  background-color: #334155;
+}
+
+
+
+
+/* Responsive Hero */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .avatar {
+    width: 200px;
+    height: auto;
+  }
+
+ 
+}
+/* Responsive Sections */
+@media (max-width: 600px) {
+  .section {
+    padding: 4rem 1rem;
+  }
+}       
+/* Responsive Buttons */
+@media (max-width: 400px) {
+    .btn {  
+        padding: 0.5rem 1rem;  
+        font-size: 0.9rem;  
+    }
+}               
+/* Theme Toggle Button (on sidebar) */
+.theme-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;     
+    font-size: 1.5rem;  
+    cursor: pointer;
+    background-color: #9caf88;      
+    color: #ffffff;  
+    transition: background-color 0.4s ease, transform 0.4s ease, opacity 0.4s ease;  
+}       
+.theme-btn:hover {
+  background-color: #7b936c;
+  transform: scale(1.1);
+}
+body.dark .theme-btn {
+  background-color: #7b936c;        
+    color: #ffffff;         
+}       
+body.dark .theme-btn:hover {
+  background-color: #9caf88;
+}   
+/* Smooth transitions for dark mode */
+body, .btn, .theme-btn, .sidebar, .sidebar-link, .skill, .project {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+/* End of CSS */
