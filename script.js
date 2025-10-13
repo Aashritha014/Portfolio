@@ -57,32 +57,35 @@ window.addEventListener("scroll", () => {
 
 
 // Dark/Light Mode Toggle
-const themeToggle = document.querySelector(".theme-btn"); // single button
-
+const themeToggle = document.querySelector(".theme-btn");
 const body = document.body;
 
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark");
-  body.classList.remove("light");
-  themeToggle.textContent = "☀️";
-} else {
-  body.classList.add("light");
-  body.classList.remove("dark");
-  themeToggle.textContent = "🌙";
-}
-
-themeToggle.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  body.classList.toggle("light");
-  if (body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
+if (themeToggle) { // Only run if button exists
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark");
+    body.classList.remove("light");
     themeToggle.textContent = "☀️";
   } else {
-    localStorage.setItem("theme", "light");
+    body.classList.add("light");
+    body.classList.remove("dark");
     themeToggle.textContent = "🌙";
   }
-});
+
+  // Toggle theme on click
+  themeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    body.classList.toggle("light");
+    if (body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      themeToggle.textContent = "☀️";
+    } else {
+      localStorage.setItem("theme", "light");
+      themeToggle.textContent = "🌙";
+    }
+  });
+}
+
 
 // Dino Game
 
@@ -213,3 +216,37 @@ function update() {
 }
 
 update();
+
+
+// View more 
+
+function setupViewMore(sectionId, linkHref, maxVisible = 4) {
+  const container = document.querySelector(`#${sectionId} .projects-grid`);
+  const viewMoreContainer = container.nextElementSibling;
+  const items = container.querySelectorAll('.project');
+
+  // Hide items beyond the maxVisible limit
+  items.forEach((item, index) => {
+    if (index >= maxVisible) {
+      item.style.display = 'none';
+    }
+  });
+
+  // Show "View More" only if there are more than maxVisible items
+  if (items.length > maxVisible) {
+    viewMoreContainer.style.display = 'block';
+    viewMoreContainer.querySelector('a').href = linkHref;
+  }
+}
+
+// Blog section: show max 4
+setupViewMore('blog', 'all-blogs.html', 4);
+
+// Projects section: show max 4
+setupViewMore('projects', 'all-projects.html', 4);
+
+
+
+
+
+
