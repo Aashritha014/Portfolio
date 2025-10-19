@@ -93,11 +93,23 @@
       </div>
 
       <div class="project">
-        <h3>Notes</h3>
-        <p>A personal webpage built for CSE Notes</p>
-        <a href="https://aashritha014.github.io/dbms-notes/"target="_blank">View Project →</a>
-      </div>
-    </div>
+  <h3>Notes</h3>
+  <p>A personal webpage built for CSE Notes</p>
+  <a href="#" onclick="authenticateUser(event)">View Project →</a>
+</div>
+
+<script>
+function authenticateUser(e) {
+  e.preventDefault();
+  const password = prompt("Enter password to access Notes:");
+  if (password === "CSEonly") {
+    window.open("https://aashritha014.github.io/dbms-notes/", "_blank");
+  } else {
+    alert("Incorrect password ❌");
+  }
+}
+</script>
+
 
 
     
