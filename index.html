@@ -121,41 +121,66 @@
     <canvas id="dino-game" width="600" height="150"></canvas>
   </section>
 
-  <!-- Firebase Modular SDK + Auth -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-    // Firebase Config
-    const firebaseConfig = {
-      apiKey: "AIzaSyDAhm61Tf75w3dSLRONd-lBSyG045oLsHU",
-      authDomain: "isha-70856.firebaseapp.com",
-      projectId: "isha-70856",
-      storageBucket: "isha-70856.firebasestorage.app",
-      messagingSenderId: "314842379363",
-      appId: "1:314842379363:web:dfe41fa22712b43bfb3456",
-      measurementId: "G-KTY7Y4LT4V"
-    };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
+<!-- Firebase Modular SDK + Auth -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-    // Login Button Logic
-    document.getElementById("loginButton").addEventListener("click", async () => {
-      try {
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
-        document.getElementById("notesLink").style.display = "inline-block";
-        const btn = document.getElementById("loginButton");
-        btn.textContent = `Logged in as ${user.displayName}`;
-        btn.disabled = true;
-      } catch (error) {
-        alert("Login failed: " + error.message);
+  // Firebase Config
+  const firebaseConfig = {
+    apiKey: "AIzaSyDAhm61Tf75w3dSLRONd-lBSyG045oLsHU",
+    authDomain: "isha-70856.firebaseapp.com",
+    projectId: "isha-70856",
+    storageBucket: "isha-70856.firebasestorage.app",
+    messagingSenderId: "314842379363",
+    appId: "1:314842379363:web:dfe41fa22712b43bfb3456",
+    measurementId: "G-KTY7Y4LT4V"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  const loginButton = document.getElementById("loginButton");
+  const notesLink = document.getElementById("notesLink");
+
+  // Optional: create a small message element for errors
+  let authMessage = document.getElementById("authMessage");
+  if (!authMessage) {
+    authMessage = document.createElement("p");
+    authMessage.id = "authMessage";
+    authMessage.style.color = "red";
+    loginButton.parentNode.insertBefore(authMessage, loginButton.nextSibling);
+  }
+
+  // Login Button Logic
+  loginButton.addEventListener("click", async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      notesLink.style.display = "inline-block";
+      loginButton.textContent = `Logged in as ${user.displayName}`;
+      loginButton.disabled = true;
+      authMessage.textContent = "";
+    } catch (error) {
+      if (error.code === "auth/unauthorized-domain") {
+        authMessage.textContent = "Cannot login: Domain not authorized in Firebase.";
+      } else {
+        authMessage.textContent = "Login failed: " + error.message;
       }
-    });
-  </script>
+    }
+  });
+</script>
+
+
+
+
+
+
+
 
   <script src="script.js"></script>
 </body>
