@@ -419,3 +419,38 @@ body.dark #dino-game {
   background-color: #1e293b;
   border-color: #334155;
 }
+
+
+/* login to view button */
+
+/* Login Button Styling */
+#loginButton {
+  background-color: #9caf88; /* Green */
+  color: white;
+  font-family: 'Fira Code', monospace; /* Updated font */
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+#loginButton:hover {
+  background-color: #9caf88;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#loginButton:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+#loginButton:disabled:hover {
+  background-color: #aaa;
+  transform: none;
+  box-shadow: none;
+} 

@@ -248,5 +248,3 @@ setupViewMore('projects', 'all-projects.html', 4);
 
 
 
-
-
