@@ -6,105 +6,90 @@
   <title>Aashritha's Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="light">
 
-  <!-- Navbar -->
-  <!-- Right Sidebar Navigation -->
-<nav class="sidebar">
-  <ul>
-    <li><a href="#about" class="sidebar-link">About</a></li>
-    <li><a href="#blog" class="sidebar-link">Blog</a></li>
-    <li><a href="#projects" class="sidebar-link">Projects</a></li>
-    <li><a href="#skills" class="sidebar-link">Skills</a></li>
-    <li><a href="#contact" class="sidebar-link">Socials</a></li>
-  </ul>
-  <button id="theme-toggle" class="theme-btn">☀️</button>
-</nav>
-
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <ul>
+      <li><a href="#about" class="sidebar-link">About</a></li>
+      <li><a href="#blog" class="sidebar-link">Blog</a></li>
+      <li><a href="#projects" class="sidebar-link">Projects</a></li>
+      <li><a href="#skills" class="sidebar-link">Skills</a></li>
+      <li><a href="#contact" class="sidebar-link">Socials</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-btn">☀️</button>
+  </nav>
 
   <!-- Hero Section -->
   <header class="hero">
-   
-        <section id="about" class="section">
-             <div class="hero-content">
-      <img src="myphoto.JPG" alt="Avatar" class="avatar">
-      <div class="hero-text">
-        <h1>Aashritha</h1>
-         <p class="description">
-          Figuring out how to code and life.<br><br>
-          Grown up kid trying to build an operating system, but for now, just trying to operate my own life. 
-          I am a passionate developer exploring web technologies, UI/UX design, and learning new frameworks.
-          I enjoy building clean and minimalistic websites that reflect my creativity and technical skills.
-            </p>
-            <p class="typing"></p>
+    <section id="about" class="section">
+      <div class="hero-content">
+        <img src="myphoto.JPG" alt="Avatar" class="avatar">
+        <div class="hero-text">
+          <h1>Aashritha</h1>
+          <p class="description">
+            Figuring out how to code and life.<br><br>
+            Grown up kid trying to build an operating system, but for now, just trying to operate my own life.
+            I am a passionate developer exploring web technologies, UI/UX design, and learning new frameworks.
+            I enjoy building clean and minimalistic websites that reflect my creativity and technical skills.
+          </p>
+          <p class="typing"></p>
+        </div>
       </div>
-    </div>
     </section>
   </header>
 
-  <!-- About Section -->
- 
-
   <!-- Blog Section -->
-  <!-- Blog Section -->
-<section id="blog" class="section">
-  <h2>Blog</h2>
+  <section id="blog" class="section">
+    <h2>Blog</h2>
+    <div class="projects-grid">
+      <div class="project">
+        <h3>Understanding NLP</h3>
+        <p>NLP enables computers to understand and process human language.</p>
+        <a href="https://flash-bream-1cd.notion.site/Basics-of-NLP-14c17bf3de1e80a5bbeaf3a79696a82d" target="_blank">Read More →</a>
+      </div>
+      <div class="project">
+        <h3>Understanding Linear Regression</h3>
+        <p>This is the most basic and overlooked concept in today's machine learning world...</p>
+        <a href="https://flash-bream-1cd.notion.site/Linear-Regression-15517bf3de1e80e592e4d92f078395f3" target="_blank">Read More →</a>
+      </div>
+      <div class="project">
+        <h3>Git & GitHub for Dummies</h3>
+        <p>Even though people often use the terms interchangeably, Git and GitHub are not the same thing.</p>
+        <a href="https://flash-bream-1cd.notion.site/Git-Github-18117bf3de1e8053b334defaa1b7465c" target="_blank">Read More →</a>
+      </div>
 
-  <div class="projects-grid">
-    <div class="project">
-      <h3>Understanding NLP</h3>
-      <p>NLP enables computers to understand and process human language.</p>
-      <a href="https://flash-bream-1cd.notion.site/Basics-of-NLP-14c17bf3de1e80a5bbeaf3a79696a82d"target="_blank">Read More →</a>
+      <div class="view-more-container" style="text-align:center; margin-top:15px;">
+        <a href="all-blogs.html">View More →</a>
+      </div>
     </div>
-
-    <div class="project">
-      <h3>Understanding Linear Regression</h3>
-      <p>This is the most basic and overlooked concept in today's machine learning world...</p>
-      <a href="https://flash-bream-1cd.notion.site/Linear-Regression-15517bf3de1e80e592e4d92f078395f3"target="_blank">Read More →</a>
-    </div>
-
-     <div class="project">
-      <h3>Git & Github for Dummies</h3>
-      <p>Even though people often use the terms interchangeably,Git and GitHub are not the same thing.</p>
-      <a href="https://flash-bream-1cd.notion.site/Git-Github-18117bf3de1e8053b334defaa1b7465c"target="_blank">Read More →</a>
-    </div>
-
-    <div>
-      <!-- Add more blog posts here -->
-    </div>
-
-
-     <div class="view-more-container" style="text-align:center; margin-top:15px;">
-      <a href="all-blogs.html">View More →</a>
-    </div>
-
-   
-</section>
-
+  </section>
 
   <!-- Projects Section -->
   <section id="projects" class="section">
     <h2>Projects</h2>
     <div class="projects-grid">
       <div class="project">
-        <h3>House Price Prediaction</h3>
+        <h3>House Price Prediction</h3>
         <p>A ML model that predicts house prices based on various features.</p>
-       <a href="https://aashritha014.github.io/house-price-predictor/"target="_blank">View Project →</a>
+        <a href="https://aashritha014.github.io/house-price-predictor/" target="_blank">View Project →</a>
       </div>
 
+      <!-- Notes Project (Firebase Login) -->
       <div class="project">
         <h3>Notes</h3>
         <p>A personal webpage built for CSE Notes</p>
-        <a href="https://aashritha014.github.io/dbms-notes/"target="_blank">View Project →</a>
+        <button id="loginButton">Login to View Notes</button>
+        <a id="notesLink" href="https://aashritha014.github.io/dbms-notes/" target="_blank" style="display:none;">
+          View Project →
+        </a>
       </div>
     </div>
 
-
-    
-     <div class="view-more-container" style="text-align:center; margin-top:15px;">
+    <div class="view-more-container" style="text-align:center; margin-top:15px;">
       <a href="all-projects.html">View More →</a>
     </div>
-
   </section>
 
   <!-- Skills Section -->
@@ -120,26 +105,57 @@
     </div>
   </section>
 
-<!-- Get in Touch Section -->
-<section id="contact" class="get-in-touch section">
-  <h2>Socials</h2>
-  
-  <div class="social-links">
-    <a href="mailto:s.aashritha14@gmail.com" target="_blank">Email</a> |
+  <!-- Socials Section -->
+  <section id="contact" class="get-in-touch section">
+    <h2>Socials</h2>
+    <div class="social-links">
+      <a href="mailto:s.aashritha14@gmail.com" target="_blank">Email</a> |
+      <a href="https://github.com/Aashritha014" target="_blank">GitHub</a> |
+      <a href="#" target="_blank">LinkedIn</a>
+    </div>
+  </section>
 
-    <a href="https://github.com/Aashritha014" target="_blank">GitHub</a> |
-    <a href="" target="">LinkedIn</a>
-  </div>
-</section>
+  <!-- Dino Game Section -->
+  <section class="dino-section section">
+    <h2>Take a Break</h2>
+    <canvas id="dino-game" width="600" height="150"></canvas>
+  </section>
 
-<!-- Dino Game Section -->
-<section class="dino-section section">
-  <h2>Take a Break</h2>
-  <canvas id="dino-game" width="600" height="150"></canvas>
-</section>
+  <!-- Firebase Modular SDK + Auth -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
+    // Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDAhm61Tf75w3dSLRONd-lBSyG045oLsHU",
+      authDomain: "isha-70856.firebaseapp.com",
+      projectId: "isha-70856",
+      storageBucket: "isha-70856.firebasestorage.app",
+      messagingSenderId: "314842379363",
+      appId: "1:314842379363:web:dfe41fa22712b43bfb3456",
+      measurementId: "G-KTY7Y4LT4V"
+    };
 
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
+    // Login Button Logic
+    document.getElementById("loginButton").addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        document.getElementById("notesLink").style.display = "inline-block";
+        const btn = document.getElementById("loginButton");
+        btn.textContent = `Logged in as ${user.displayName}`;
+        btn.disabled = true;
+      } catch (error) {
+        alert("Login failed: " + error.message);
+      }
+    });
+  </script>
 
   <script src="script.js"></script>
 </body>
