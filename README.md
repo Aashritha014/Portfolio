@@ -1,6 +1,6 @@
-# 📜 Blog Page
 
-Welcome to **Aashritha's Blog**! This is a personal website and portfolio for sharing projects, notes, and blog posts on topics in computer science, machine learning, and more.
+
+This is a personal website and portfolio for sharing projects, notes, and blog posts on topics in computer science, machine learning, and more.
 
 ## ✨ Live Demo
 
