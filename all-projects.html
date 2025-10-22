@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Projects - Aashritha's Portfolio</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 </head>
 <body class="light">
 
@@ -31,8 +35,7 @@
         <a href="https://aashritha014.github.io/house-price-predictor/" target="_blank">View Project →</a>
       </div>
 
-
-       <div class="project">
+      <div class="project">
         <h3>Notes</h3>
         <p>A personal webpage built for CSE Notes</p>
         <button id="loginButton">Login to View Notes</button>
@@ -41,11 +44,6 @@
         </a>
       </div>
     </div>
-
-
-
-
-        <!-- Add more projects here -->
 
     <!-- Back to Home Link -->
     <div style="text-align:center; margin-top:20px;">
@@ -59,7 +57,6 @@
     const body = document.body;
 
     if (themeToggle) {
-      // Load saved theme
       if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark");
         body.classList.remove("light");
@@ -70,7 +67,6 @@
         themeToggle.textContent = "🌙";
       }
 
-      // Toggle theme on click
       themeToggle.addEventListener("click", () => {
         body.classList.toggle("dark");
         body.classList.toggle("light");
@@ -84,12 +80,37 @@
       });
     }
 
+    // Firebase Config (replace with your own)
+   const firebaseConfig = {
+    apiKey: "AIzaSyDAhm61Tf75w3dSLRONd-lBSyG045oLsHU",
+    authDomain: "isha-70856.firebaseapp.com",
+    projectId: "isha-70856",
+    storageBucket: "isha-70856.firebasestorage.app",
+    messagingSenderId: "314842379363",
+    appId: "1:314842379363:web:dfe41fa22712b43bfb3456",
+    measurementId: "G-KTY7Y4LT4V"
+  };
 
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-    
+    // Notes Project Login Logic
+    const loginButton = document.getElementById("loginButton");
+    const notesLink = document.getElementById("notesLink");
 
+    loginButton.addEventListener("click", () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          alert(`Welcome ${result.user.displayName}!`);
+          notesLink.style.display = "inline";
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Login failed! Try again.");
+        });
+    });
   </script>
-  
-
 </body>
 </html>
