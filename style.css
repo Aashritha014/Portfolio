@@ -393,7 +393,7 @@ body, .btn, .theme-btn, .sidebar, .sidebar-link, .skill, .project {
   text-align: center;
   margin-top: 3rem;
   padding-top: 2rem; /* reduce space from socials above */
-  padding-bottom: 4rem; /* keep some bottom spacing */
+  padding-bottom: 4rem; 
 }
 
 .dino-section h2 {
@@ -421,7 +421,7 @@ body.dark #dino-game {
 }
 
 
-/* login to view button */
+
 
 /* Login Button Styling */
 #loginButton {
