@@ -4,7 +4,7 @@ This is a personal website and portfolio for sharing projects, notes, and blog p
 
 ## ✨ Live Demo
 
-Visit the website [here](https://aashritha014.github.io/Portfolio/) (or deploy using GitHub Pages).
+Visit the website [here](https://aashritha.netlify.app) .
 
 ## 🚀 Features
 
@@ -25,14 +25,8 @@ Visit the website [here](https://aashritha014.github.io/Portfolio/) (or deploy u
 
 ## 📦 Usage
 
-1. **Clone the repo:**
-   ```bash
-   git clone https://github.com/Aashritha014/Blog-Page.git
-   ```
-2. **Open `index.html` in your browser:**  
-   No build step required!
 
-3. **Explore features:**
+ **Explore features:**
    - Toggle sections like About, Notes, Projects, Blogs by clicking their headers.
    - Try out the interactive drawing canvas; save or clear your creations.
    - Use the dark mode switch in the top right for a different look.
