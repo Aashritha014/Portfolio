@@ -51,37 +51,7 @@
     </div>
   </section>
 
-  <script>
-    // Universal Dark/Light Mode Toggle
-    const themeToggle = document.querySelector(".theme-btn");
-    const body = document.body;
-
-    if (themeToggle) {
-      // Load saved theme
-      if (localStorage.getItem("theme") === "dark") {
-        body.classList.add("dark");
-        body.classList.remove("light");
-        themeToggle.textContent = "☀️";
-      } else {
-        body.classList.add("light");
-        body.classList.remove("dark");
-        themeToggle.textContent = "🌙";
-      }
-
-      // Toggle theme on click
-      themeToggle.addEventListener("click", () => {
-        body.classList.toggle("dark");
-        body.classList.toggle("light");
-        if (body.classList.contains("dark")) {
-          localStorage.setItem("theme", "dark");
-          themeToggle.textContent = "☀️";
-        } else {
-          localStorage.setItem("theme", "light");
-          themeToggle.textContent = "🌙";
-        }
-      });
-    }
-  </script>
+  <script type="module" src="script.js"></script>
 
 </body>
 </html>
