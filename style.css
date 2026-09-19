@@ -171,6 +171,7 @@ body.dark .theme-btn:hover {
 
 .hero-text h1 {
   font-size: 3.5rem;
+  font-weight: 700;
   margin-bottom: 1rem;
 }
 
@@ -196,6 +197,7 @@ body.dark .theme-btn:hover {
 
 .section h2 {
   margin-bottom: 2rem;
+  font-weight: 700;
 }
 
 /* -------------------- SKILLS -------------------- */
@@ -453,4 +455,123 @@ body.dark #dino-game {
   background-color: #aaa;
   transform: none;
   box-shadow: none;
-} 
+}
+
+/* -------------------- CONTACT FORM -------------------- */
+.contact-form {
+  max-width: 480px;
+  margin: 2.5rem auto 0;
+  font-family: 'Fira Code', monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-form .form-label {
+  font-weight: bold;
+  color: #1e293b;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.contact-form .form-control {
+  font-family: 'Fira Code', monospace;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  border-radius: 0.6rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-form textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .invalid-feedback {
+  margin-top: -0.15rem;
+}
+
+.contact-form .form-control:focus {
+  border-color: #9caf88;
+  box-shadow: 0 0 0 0.2rem rgba(156, 175, 136, 0.25);
+}
+
+.contact-form .form-control.is-valid {
+  border-color: #9caf88;
+}
+
+.btn-contact {
+  background-color: #9caf88;
+  color: #ffffff;
+  font-family: 'Fira Code', monospace;
+  font-weight: bold;
+  padding: 0.9rem 1.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn-contact:hover {
+  background-color: #7b936c;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-contact:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.form-status {
+  font-weight: bold;
+  min-height: 1.5rem;
+  text-align: center;
+}
+
+.form-status.success {
+  color: #4a7a3d;
+}
+
+.form-status.error {
+  color: #ff4d4f;
+}
+
+#contact-form h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* Dark mode overrides for the contact form */
+body.dark .contact-form .form-label {
+  color: #ffffff;
+}
+
+body.dark .contact-form .form-control {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #ffffff;
+}
+
+body.dark .contact-form .form-control:focus {
+  border-color: #9caf88;
+  box-shadow: 0 0 0 0.2rem rgba(156, 175, 136, 0.3);
+}
+
+body.dark .form-status.success {
+  color: #9caf88;
+}
