@@ -28,13 +28,14 @@ a:hover {
 .sidebar {
   position: fixed;
   top: 50%;
-  right: 20px;
+  right: clamp(24px, 4vw, 56px);
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
   z-index: 100;
+  padding: 0.75rem 0.4rem;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -98,40 +99,95 @@ body.dark .theme-btn:hover {
   background-color: #9caf88;
 }
 
-/* -------------------- MOBILE SIDEBAR -------------------- */
-@media (max-width: 768px) {
+/* -------------------- COMPACT / BOTTOM SIDEBAR (kicks in before the
+   side nav can ever overlap wide content like the projects grid) -------------------- */
+@media (max-width: 1200px) {
   .sidebar {
     flex-direction: row;
-    bottom: 10px;
+    align-items: center;
+    bottom: max(22px, calc(env(safe-area-inset-bottom, 0px) + 14px));
     top: auto;
-    right: 50%;
-    transform: translateX(50%);
-    gap: 1rem;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    gap: 0.6rem;
+    width: calc(100% - 2rem);
+    max-width: 420px;
     background-color: rgba(255, 255, 255, 0.85);
-    padding: 0.6rem 1.4rem;
+    padding: 0.45rem 0.6rem 0.45rem 0.9rem;
     border-radius: 50px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
   }
 
+  /* ul shares the pill with the theme button, so it takes the
+     remaining space and scrolls instead of stretching over it */
   .sidebar ul {
+    flex: 1 1 auto;
+    min-width: 0;
     flex-direction: row;
-    gap: 1rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .sidebar ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar ul li {
+    flex: 0 0 auto;
   }
 
   .sidebar-link {
     writing-mode: horizontal-tb;
     transform: rotate(0deg);
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    font-size: clamp(0.68rem, 3vw, 0.85rem);
+    white-space: nowrap;
     transition: color 0.3s ease, transform 0.3s ease;
   }
 
-  .sidebar-link:hover {
-    transform: scale(1.1);
+  .sidebar-link:hover,
+  .sidebar-link.active {
+    transform: scale(1.08);
+  }
+
+  /* Theme button shrinks and never gets squeezed by the link list */
+  .theme-btn {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 
   body.dark .sidebar {
     background-color: rgba(30, 41, 59, 0.85);
     box-shadow: 0 2px 15px rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Extra-small phones: shrink further instead of letting labels clip */
+@media (max-width: 380px) {
+  .sidebar {
+    width: calc(100% - 1.2rem);
+    padding: 0.5rem 0.5rem;
+  }
+
+  .sidebar-link {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.68rem;
+  }
+
+  .theme-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
   }
 }
 
