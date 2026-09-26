@@ -1,49 +1,79 @@
+# Aashritha's Portfolio
 
+A personal portfolio website built with HTML5, CSS3, and vanilla JavaScript — featuring a responsive sidebar navigation, dark/light theme toggle, a working contact form, Google sign-in for gated content, and a small canvas-based Dino game for fun.
 
-This is a personal website and portfolio for sharing projects, notes, and blog posts on topics in computer science, machine learning, and more.
+**Live site:** [aashritha.netlify.app](https://aashritha.netlify.app)
 
-## ✨ Live Demo
+## Features
 
-Visit the website [here](https://aashritha014.github.io/Portfolio/) (or deploy using GitHub Pages).
+- **About / Hero section** — intro with avatar and a typewriter-style animated tagline
+- **Blog** — preview cards linking out to full posts, with a "View More" link once the list grows past a few entries
+- **Projects** — showcase cards, including a project gated behind Google login
+- **Skills** — a responsive grid of tech/tools
+- **Contact form** — client-side validated, submits via the Web3Forms API with live success/error feedback
+- **Socials** — quick links (email, GitHub, LinkedIn)
+- **Dark / light mode** — toggle button in the nav, choice persisted in `localStorage`
+- **Dino game** — a small canvas-based jump game tucked at the bottom of the page
+- **Fully responsive** — the sidebar collapses into a bottom pill on smaller screens so it never overlaps page content
 
-## 🚀 Features
+## Tech Stack
 
-- **About Me:** Brief introduction and background.
-- **Semester Notes:** Summaries and resources for coursework, like OS Lab notes ([example](https://flash-bream-1cd.notion.site/OS-Lab-20917bf3de1e8066b5e7e8e6aa15acf3?source=copy_link)).
-- **Projects:** Highlights of personal projects, e.g., [House Prediction Model](https://aashritha014.github.io/house-price-predictor/).
-- **Blogs:** Posts on topics such as [Understanding Linear Regression](https://flash-bream-1cd.notion.site/Linear-Regression-15517bf3de1e80e592e4d92f078395f3?source=copy_link) and [Basics of NLP](https://flash-bream-1cd.notion.site/Basics-of-NLP-14c17bf3de1e80a5bbeaf3a79696a82d).
-- **Interactive Drawing Canvas:** Draw, change brush color and thickness, save or clear your art right on the site.
-- **Dark Mode:** Toggle for comfortable reading at any time.
+| Layer | Tools |
+|---|---|
+| Structure | Semantic HTML5 |
+| Styling | CSS3 (Flexbox, Grid, custom properties, media queries) |
+| Component styling | Bootstrap 5 (form validation classes only) |
+| Interactivity | Vanilla JavaScript (ES modules) |
+| Auth | Firebase Authentication (Google sign-in) |
+| Form backend | Web3Forms |
+| Hosting | Netlify |
 
-## 🛠️ Technologies Used
+## Project Structure
 
-- **HTML/CSS/JavaScript:** For structure, styling, interactivity, and responsive design.
-- **Canvas API:** For the drawing feature.
-- **Font Awesome:** For icons.
-- **Notion:** Linked as a resource for notes and extended blog content.
-- **GitHub Pages:** For project hosting.
+```
+├── index.html          # Main page markup
+├── style.css            # All styling, layout, and responsive rules
+├── script.js             # Typing animation, nav, theme toggle, dino game,
+│                          # contact form, and Firebase login logic
+├── all-blogs.html        # Full blog listing (linked from "View More")
+├── all-projects.html     # Full projects listing (linked from "View More")
+└── Kitten.gif             # Hero avatar image
+```
 
-## 📦 Usage
+## Getting Started
 
-1. **Clone the repo:**
+Since this is a static site with no build step, you can run it directly:
+
+1. Clone the repo:
    ```bash
-   git clone https://github.com/Aashritha014/Blog-Page.git
+   git clone https://github.com/Aashritha014/Portfolio.git
+   cd Portfolio
    ```
-2. **Open `index.html` in your browser:**  
-   No build step required!
+2. Open `index.html` in a browser, or serve it locally (recommended, since `script.js` uses ES module imports):
+   ```bash
+   npx serve .
+   ```
 
-3. **Explore features:**
-   - Toggle sections like About, Notes, Projects, Blogs by clicking their headers.
-   - Try out the interactive drawing canvas; save or clear your creations.
-   - Use the dark mode switch in the top right for a different look.
+## Configuration
+
+Two features rely on external services and need their own credentials to work:
+
+- **Contact form (Web3Forms):** replace the `access_key` hidden input value in `index.html` with your own [Web3Forms](https://web3forms.com) key.
+- **Google login (Firebase):** update the `firebaseConfig` object in `script.js` with your own Firebase project's config, and make sure your deployed domain is added to Firebase's **Authorized domains** list (otherwise you'll see an `auth/unauthorized-domain` error).
+
+## Responsive Breakpoints
+
+| Width | Behavior |
+|---|---|
+| `> 1200px` | Sidebar nav sits vertically on the right |
+| `≤ 1200px` | Sidebar collapses into a horizontal pill at the bottom of the screen |
+| `≤ 768px` | Hero content stacks vertically, avatar shrinks |
+| `≤ 600px` | Section padding tightens |
+| `≤ 480px` | Project grid drops to a single column |
+| `≤ 380px` | Nav pill and links shrink further for small phones |
 
 
 
-## 📬 Contact
+## License
 
-- **GitHub:** [Aashritha014](https://github.com/Aashritha014)
-- **Email:** [s.aashritha14@gmail.com](mailto:s.aashritha14@gmail.com)
-
----
-
-*Thanks for visiting my blog—feel free to check out the projects, learn from the notes, or reach out!*
+Personal project — feel free to reference the code, but please don't republish it as your own portfolio.
